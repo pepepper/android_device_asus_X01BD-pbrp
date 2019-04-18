@@ -1,5 +1,5 @@
 #
-# Copyright 2018 The Android Open Source Project
+# Copyright (C) 2017 The Android Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -15,37 +15,25 @@
 #
 
 # Release name
-PRODUCT_RELEASE_NAME := jasmine_sprout
+PRODUCT_RELEASE_NAME := X01BD
 
 $(call inherit-product, build/target/product/embedded.mk)
 
 # Inherit from our custom product configuration
 $(call inherit-product, vendor/omni/config/common.mk)
 
-# Inherit language packages
-$(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
-
-# Charger
-PRODUCT_PACKAGES += \
-    charger_res_images \
-    charger
-
-# Define time zone data path
-ifneq ($(wildcard bionic/libc/zoneinfo),)
-    TZDATAPATH := bionic/libc/zoneinfo
-else ifneq ($(wildcard system/timezone),)
-    TZDATAPATH := system/timezone/output_data/iana
-endif
-
-# Time Zone data for Recovery
-ifdef TZDATAPATH
-PRODUCT_COPY_FILES += \
-    $(TZDATAPATH)/tzdata:recovery/root/system/usr/share/zoneinfo/tzdata
-endif
+PRODUCT_PROPERTY_OVERRIDES += \
+    sys.usb.controller=a800000.dwc3 \
+    sys.usb.rndis.func.name=rndis_bam \
+    sys.usb.rmnet.func.name=rmnet_bam
 
 ## Device identifier. This must come after all inclusions
-PRODUCT_NAME := omni_jasmine_sprout
-PRODUCT_DEVICE := jasmine_sprout
-PRODUCT_BRAND := Xiaomi
-PRODUCT_MODEL := Mi A2
-PRODUCT_MANUFACTURER := Xiaomi
+PRODUCT_NAME := omni_X01BD
+PRODUCT_DEVICE := X01BD
+PRODUCT_MANUFACTURER := Asus
+PRODUCT_BRAND := Asus
+PRODUCT_MODEL := Zenfone Max Pro M2
+
+TARGET_VENDOR_PRODUCT_NAME := X01BD
+TARGET_VENDOR_DEVICE_NAME := X01BD
+PRODUCT_BUILD_PROP_OVERRIDES += TARGET_DEVICE=X01BD PRODUCT_NAME=X01BD
