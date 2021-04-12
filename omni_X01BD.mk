@@ -21,7 +21,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/embedded.mk)
 
 # Inherit from our custom product configuration
-$(call inherit-product, vendor/pb/config/common.mk)
+$(call inherit-product, vendor/omni/config/common.mk)
 
 PRODUCT_PROPERTY_OVERRIDES += \
     sys.usb.controller=a800000.dwc3 \
